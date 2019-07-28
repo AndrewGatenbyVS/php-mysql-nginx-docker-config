@@ -1,6 +1,6 @@
 # Yet another typical PHP + NGINX + MySQL docker config.
 
-Just like JS frameworks, this is _another_ PHP + NGINX + MySQL Docker configuration.  Mostly for my own ends, but feel free to fork and rename containers if it looks of use :v:
+Just like JS frameworks, this is _another_ PHP + NGINX + MySQL Docker configuration that the world doesn't need.  Mostly done and shared for my own ends, but feel free to fork and rename containers if it looks of use :v:
 
 ## Install
 
