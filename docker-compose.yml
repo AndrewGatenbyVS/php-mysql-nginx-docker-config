@@ -1,0 +1,38 @@
+version: '3.5'
+services:
+  andrewgatenby-app:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www:cached
+    links:
+      - andrewgatenby-mysql
+  andrewgatenby-nginx:
+    build:
+      context: ./docker/nginx
+      target: dc
+    ports:
+      - "8888:80"
+    volumes:
+      - .:/var/www:cached
+    links:
+      - andrewgatenby-app
+    depends_on:
+      - andrewgatenby-app
+  andrewgatenby-mysql:
+    ports:
+      - "33306:3306"
+    build: ./docker/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - andrewgatenby_mysql_data:/var/lib/mysql:delegated
+networks:
+  default:
+    external:
+      name: andrewgatenby-network
+volumes:
+  andrewgatenby_mysql_data:
